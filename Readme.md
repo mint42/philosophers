@@ -1,11 +1,11 @@
 # PHILOSOPHERS
 
-philosophers is a systems project in the 42 curriculum. It highlights the concepts of multi-thread management, mutexes, and semaphores. The goal of the project is to simulate the [Dining Philosopher Problem](https://en.wikipedia.org/wiki/Dining_philosophers_problem).
+Philosophers is a systems project in the 42 curriculum. It highlights the concepts of multi-thread management, mutexes, and semaphores. The goal of the project is to simulate the [Dining Philosophers Problem](https://en.wikipedia.org/wiki/Dining_philosophers_problem).
 
 ## Getting Started
 
 ```
-git clone [github link](https://github.com/mint42/philosophers)
+git clone https://github.com/mint42/philosophers
 ```
 
 Inside the cloned repository are three phil_# folders, which can all be compiled and run separately. For each one there is a Makefile that, when the `make` command is run in that folder, will create an executable.
