@@ -1,29 +1,28 @@
 #include "error.h"
-#include "struct_monastery.h"
+#include "struct_state.h"
 #include "struct_phil.h"
 #include <stdlib.h>
 
-static void		setup_phil(struct s_phil *phil, struct s_monastery *mon,
-						unsigned int id)
+void	setup_phil(struct s_phil *phil, unsigned int id, struct s_state *state)
 {
-	phil->phil_id = id;
-	phil->tt_die = mon->tt_die;
-	phil->tt_eat = mon->tt_eat;
-	phil->tt_sleep = mon->tt_sleep;
+	phil->id = id;
+	phil->tt_die = state->tt_die;
+	phil->tt_eat = state->tt_eat;
+	phil->tt_sleep = state->tt_sleep;
 	phil->n_x_eaten = 0;
 }
 
-int				setup_phils(struct s_phil **phils, struct s_monastery *mon)
+int		create_phils(struct s_phil **phils, struct s_state *state)
 {
 	unsigned int	i;
 
-	*phils = malloc(sizeof(struct s_phil) * mon->n_phils);
+	*phils = malloc(sizeof(struct s_phil) * state->n_phils);
 	if (!*phils)
 		return (ERROR);
 	i = 0;
-	while (i < mon->n_phils)
+	while (i < state->n_phils)
 	{
-		setup_phil(&((*phils)[i]), mon, i + 1);
+		setup_phil(&((*phils)[i]), i + 1, state);
 		++i;
 	}
 	return (SUCCESS);
@@ -31,6 +30,7 @@ int				setup_phils(struct s_phil **phils, struct s_monastery *mon)
 
 void	destroy_phils(struct s_phil **phils)
 {
-	free(*phils);
+	if (*phils)
+		free(*phils);
 	*phils = 0;
 }

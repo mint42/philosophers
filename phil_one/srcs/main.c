@@ -1,7 +1,8 @@
 #include "error.h"
 #include "philosophers.h"
-#include "struct_monastery.h"
+#include "struct_state.h"
 #include <stdio.h>
+#include <pthread.h>
 
 static void		print_usage(void)
 {
@@ -29,16 +30,16 @@ static void		print_usage(void)
 
 int				main(int argc, char **argv)
 {
-	struct s_monastery		mon;
+	struct s_state	state;
 
-	if (argc < NUM_NEEDED_ARGS + 1 || argc > NUM_NEEDED_ARGS + 2)
+	if (argc < (NUM_ARGS_NEEDED + 1) || argc > (NUM_ARGS_ALLOWED + 1))
 	{
 		print_usage();
 		return (1);
 	}
-	if (setup_monastery(&mon, argc, argv) == ERROR)
+	if (setup_state(&state, argc, argv) == ERROR)
 		return (1);
-	if (run_simulation(&mon) == ERROR)
+	if (run_simulation(&state) == ERROR)
 		return (1);
 	return (0);
 }
