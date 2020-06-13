@@ -6,7 +6,7 @@
 #    By: rreedy <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/16 11:54:37 by rreedy            #+#    #+#              #
-#    Updated: 2020/06/06 21:12:51 by mint             ###   ########.fr        #
+#    Updated: 2020/06/13 16:43:32 by mint             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ CFLAGS += -Wall
 CFLAGS += -Wextra
 CFLAGS += -Werror
 CFLAGS += -I$(INCLUDE_DIR)
+CFLAGS += -pthread
 
 SRCS := $(wildcard $(SRC_DIR)/*.c)
 OBJS := $(patsubst %.c,%.o,$(SRCS))
