@@ -12,7 +12,7 @@ struct s_phil;
 **	use_full_condition			was optional arg (n_meals_to_be_full) given
 **	n_meals_to_be_full			set if given, else 0
 **	n_phils_full				number of phils currently full
-**	n_phils_dead				number of phils currently dead
+**	is_phil_dead				number of phils currently dead
 **	forks						array of forks size [n_phils]
 **	phils						array of phils size [n_phils]
 */
@@ -26,7 +26,7 @@ struct					s_state
 	unsigned int		use_full_condition;
 	unsigned int		n_meals_to_be_full;
 	unsigned int		n_phils_full;
-	unsigned int		n_phils_dead;
+	unsigned int		is_phil_dead;
 	struct s_fork		*forks;
 	struct s_phil		*phils;
 };

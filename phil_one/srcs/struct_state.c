@@ -4,6 +4,7 @@
 #include "struct_state.h"
 #include "struct_fork.h"
 #include "struct_phil.h"
+#include <stdbool.h>
 
 int		setup_state(struct s_state *state, int argc, char **argv)
 {
@@ -40,7 +41,7 @@ void	cleanup_state(struct s_state *state)
 
 int		are_end_conds_met(struct s_state *cur_state)
 {
-	if (cur_state->n_phils_dead > 0)
+	if (cur_state->is_phil_dead > true)
 		return (TRUE);
 	if (cur_state->use_full_condition == TRUE && cur_state->n_phils_full == cur_state->n_phils)
 		return (TRUE);
