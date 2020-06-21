@@ -20,11 +20,11 @@ struct s_phil;
 struct					s_state
 {
 	unsigned int		n_phils;
-	unsigned int		tt_die;
-	unsigned int		tt_eat;
-	unsigned int		tt_sleep;
+	unsigned int		ttt_die;
+	unsigned int		ttt_eat;
+	unsigned int		ttt_sleep;
 	unsigned int		use_full_condition;
-	unsigned int		n_meals_to_be_full;
+	unsigned int		n_meals_full;
 	unsigned int		n_phils_full;
 	unsigned int		is_phil_dead;
 	struct s_fork		*forks;

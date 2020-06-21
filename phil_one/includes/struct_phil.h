@@ -28,9 +28,6 @@ enum				e_status
 struct				s_phil
 {
 	unsigned int	id;
-	unsigned int	tt_die;
-	unsigned int	tt_eat;
-	unsigned int	tt_sleep;
 	unsigned int	n_x_eaten;
 	unsigned int	is_dead;
 	unsigned int	is_full;

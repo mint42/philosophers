@@ -11,9 +11,6 @@
 void	setup_phil(struct s_phil *phil, unsigned int id, struct s_state *state)
 {
 	phil->id = id;
-	phil->tt_die = state->tt_die;
-	phil->tt_eat = state->tt_eat;
-	phil->tt_sleep = state->tt_sleep;
 	phil->n_x_eaten = 0;
 	phil->is_full = false;
 	phil->is_dead = false;

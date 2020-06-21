@@ -10,17 +10,17 @@ int		setup_state(struct s_state *state, int argc, char **argv)
 {
 	if (util_atoui(&(state->n_phils), argv[1]) == ERROR)
 		return (ERROR);
-	if (util_atoui(&(state->tt_die), argv[2]) == ERROR)
+	if (util_atoui(&(state->ttt_die), argv[2]) == ERROR)
 		return (ERROR);
-	if (util_atoui(&(state->tt_eat), argv[3]) == ERROR)
+	if (util_atoui(&(state->ttt_eat), argv[3]) == ERROR)
 		return (ERROR);
-	if (util_atoui(&(state->tt_sleep), argv[4]) == ERROR)
+	if (util_atoui(&(state->ttt_sleep), argv[4]) == ERROR)
 		return (ERROR);
 	if (argc == (NUM_ARGS_ALLOWED + 1))
 	{
-		if (util_atoui(&(state->n_meals_to_be_full), argv[5]) == ERROR)
+		if (util_atoui(&(state->n_meals_full), argv[5]) == ERROR)
 			return (ERROR);
-		if (state->n_meals_to_be_full == 0)
+		if (state->n_meals_full == 0)
 			return (ERROR);
 		state->use_full_condition = TRUE;
 	}
