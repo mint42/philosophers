@@ -8,31 +8,29 @@
 
 void		*instructions(void *data)
 {
-	struct s_state			*cur_state;
-//	struct s_phil			*phil;
-//	struct s_fork			*lfork;
-//	struct s_fork			*rfork;
+	struct s_thread_data	*tdata;
+	struct s_state			*state;
+	struct s_phil			*phil;
 
-	cur_state = ((struct s_thread_data *)(data))->state;
-	return (cur_state);
-//	phil = &(cur_state->phils[((struct s_thread_data *)(data))->phil_id]);
-//	rfork = &(cur_state->forks[((struct s_thread_data *)(data))->phil_id - 1]);
-//	lfork = &(cur_state->forks[(((struct s_thread_data *)(data))->phil_id == cur_state->n_phils) ? ((struct s_thread_data *)(data))->phil_id : 0]);
-//	while (is_dead(phil) == FALSE)
-//	{
-//		if (is_fork_in_use(lfork) == FALSE && is_fork_in_use(rfork) == FALSE)
-//		{
-//			eat(phil);
-//			if (is_full(phil) == TRUE)
-//			{
-//				print(id, FULL);
-//				if (does_being_full_matter == TRUE)
-//					break ;
-//			}
-//		}
-//		sleep(phil);
-//	}
-//	print(id, DEAD);
+	tdata = (struct s_thread_data *)data;
+	state = tdata->state;
+	phil = &(state->phils[tdata->id - 1]);
+	while (phil->is_dead == FALSE)
+	{
+		phil_think(phil);
+		phil_grab_forks(phil, state);
+		if (phil->is_dead == TRUE)
+			return (NULL);
+		phil_eat(phil);
+		phil_drop_forks(phil);
+		if (phil->is_full == TRUE)
+		{
+			++(state->n_phils_full);
+			break ;
+		}
+		phil_sleep(phil);
+	}
+	return (NULL);
 }
 
 int				run_simulation(struct s_state *state)
