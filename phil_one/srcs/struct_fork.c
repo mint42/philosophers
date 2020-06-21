@@ -2,22 +2,33 @@
 #include "struct_fork.h"
 #include <stdlib.h>
 #include <stdbool.h>
+#include <pthread.h>
 
-void	setup_fork(struct s_fork *fork)
+int		setup_fork(struct s_fork *fork)
 {
 	fork->is_in_use = false;
+	if (pthread_mutex_init(&(fork->lock), NULL) != 0)
+		return(ERROR);
+	return (SUCCESS);
+}
+
+int		cleanup_fork(struct s_fork *fork)
+{
+	if (pthread_mutex_destroy(&(fork->lock)) != 0)
+		return (ERROR);
+	return (SUCCESS);
 }
 
 void	fork_be_grabbed(struct s_fork *fork)
 {
-	(void)fork;
-	////pthread_mutex_lock(fork);
+	fork->is_in_use = true;
+	pthread_mutex_lock(&(fork->lock));
 }
 
 void	fork_be_dropped(struct s_fork *fork)
 {
-	(void)fork;
-	//pthread_mutex_unlock(fork);
+	fork->is_in_use = false;
+	pthread_mutex_unlock(&(fork->lock));
 }
 
 int		create_forks(struct s_fork **forks, unsigned int n_forks)
@@ -30,15 +41,28 @@ int		create_forks(struct s_fork **forks, unsigned int n_forks)
 	i = 0;
 	while (i < n_forks)
 	{
-		setup_fork(&((*forks)[i]));
+		if (setup_fork(&((*forks)[i])) == ERROR)
+			return (ERROR);
 		++i;
 	}
 	return (SUCCESS);
 }
 
-void	destroy_forks(struct s_fork **forks)
+int		destroy_forks(struct s_fork **forks, unsigned int n_forks)
 {
+	unsigned int	i;
+
+	if (!*forks)
+		return (ERROR);
+	i = 0;
+	while (i < n_forks)
+	{
+		if (cleanup_fork(&((*forks)[i])) == ERROR)
+			return (ERROR);
+		++i;
+	}
 	if (*forks)
 		free(*forks);
 	*forks = 0;
+	return (SUCCESS);
 }

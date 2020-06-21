@@ -1,6 +1,8 @@
 #ifndef STRUCT_FORK_H
 # define STRUCT_FORK_H
 
+# include <pthread.h>
+
 /*
 **	setup	-> constructor(initializes/creates insides)
 **	cleanup	-> destructor (restores/destroys insides)
@@ -18,14 +20,16 @@
 
 struct		s_fork
 {
-	char	is_in_use;
+	pthread_mutex_t		lock;
+	char				is_in_use;
 };
 
-void		setup_fork(struct s_fork *fork);
+int			setup_fork(struct s_fork *fork);
+int			cleanup_fork(struct s_fork *fork);
 void		fork_be_grabbed(struct s_fork *fork);
 void		fork_be_dropped(struct s_fork *fork);
 
 int			create_forks(struct s_fork **forks, unsigned int n_forks);
-void		destroy_forks(struct s_fork **forks);
+int			destroy_forks(struct s_fork **forks, unsigned int n_forks);
 
 #endif
