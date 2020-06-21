@@ -48,5 +48,6 @@ int				run_simulation(struct s_state *state)
 	}
 	while (are_end_conds_met(state) == FALSE)
 		;
+	destroy_thread_datas(&tdatas);	
 	return (SUCCESS);
 }

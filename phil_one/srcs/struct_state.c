@@ -33,10 +33,12 @@ int		setup_state(struct s_state *state, int argc, char **argv)
 	return (SUCCESS);
 }
 
-void	cleanup_state(struct s_state *state)
+int		cleanup_state(struct s_state *state)
 {
-	destroy_forks(&(state->forks));
 	destroy_phils(&(state->phils));
+	if (destroy_forks(&(state->forks), state->n_phils) == ERROR)
+		return (ERROR);
+	return (SUCCESS);
 }
 
 int		are_end_conds_met(struct s_state *cur_state)

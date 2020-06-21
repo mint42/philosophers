@@ -40,5 +40,7 @@ int				main(int argc, char **argv)
 		return (1);
 	if (run_simulation(&state) == ERROR)
 		return (1);
+	if (cleanup_state(&state) == ERROR)
+		return (1);
 	return (0);
 }

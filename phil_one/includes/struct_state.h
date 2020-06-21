@@ -32,7 +32,7 @@ struct					s_state
 };
 
 int						setup_state(struct s_state *state, int argc, char **argv);
-void					cleanup_state(struct s_state *state);
+int						cleanup_state(struct s_state *state);
 
 int						are_end_conds_met(struct s_state *state);
 
