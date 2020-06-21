@@ -15,7 +15,7 @@ struct					s_state;
 */
 
 
-enum				e_status
+enum				e_action
 {
 	E_THINKING,
 	E_SLEEPING,
@@ -36,6 +36,7 @@ struct				s_phil
 
 void				setup_phil(struct s_phil *phil, unsigned int id,
 							struct s_state *state);
+void				phil_print_action(const struct s_phil *phil, enum e_action ac);
 
 void				phil_eat(struct s_phil *phil);
 void				phil_sleep(struct s_phil *phil);

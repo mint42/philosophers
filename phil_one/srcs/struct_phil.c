@@ -18,10 +18,9 @@ void	setup_phil(struct s_phil *phil, unsigned int id, struct s_state *state)
 	phil->forks[1] = &(state->forks[(id < state->n_phils) ? id : 0]);
 }
 
-
-void	phil_print_status(struct s_phil *phil, enum e_status s)
+void	phil_print_action(const struct s_phil *phil, enum e_action ac)
 {
-	const char		*stats[6] = {
+	const char		*actions[6] = {
 		"is thinking",
 		"is sleeping",
 		"is eating",
