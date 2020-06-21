@@ -42,8 +42,12 @@ void				destroy_phils(struct s_phil **phil);
 
 void				phil_print_action(const struct s_phil *phil, enum e_action ac);
 
-void				phil_eat(struct s_phil *phil);
-void				phil_sleep(struct s_phil *phil);
+/*
+**	Actions
+*/
+
+void				phil_eat(struct s_phil *phil, const struct s_state *state);
+void				phil_sleep(struct s_phil *phil, const struct s_state *state);
 void				phil_think(struct s_phil *phil);
 void				phil_grab_forks(struct s_phil *phil, const struct s_state *state);
 void				phil_drop_forks(struct s_phil *phil);

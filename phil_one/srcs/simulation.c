@@ -30,14 +30,14 @@ void			*instructions(void *data)
 		phil_grab_forks(phil, state);
 		if (phil->is_dead == TRUE)
 			return (NULL);
-		phil_eat(phil);
+		phil_eat(phil, state);
 		phil_drop_forks(phil);
 		if (phil->is_full == TRUE)
 		{
 			++(state->n_phils_full);
 			break ;
 		}
-		phil_sleep(phil);
+		phil_sleep(phil, state);
 	}
 	return (NULL);
 }
