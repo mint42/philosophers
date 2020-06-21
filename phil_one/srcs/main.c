@@ -2,7 +2,6 @@
 #include "philosophers.h"
 #include "struct_state.h"
 #include <stdio.h>
-#include <pthread.h>
 
 static void		print_usage(void)
 {
