@@ -18,7 +18,6 @@ void	setup_phil(struct s_phil *phil, unsigned int id, struct s_state *state)
 	phil->forks[1] = &(state->forks[(id < state->n_phils) ? id : 0]);
 }
 
-# define TIME 69420
 
 void	phil_print_status(struct s_phil *phil, enum e_status s)
 {
