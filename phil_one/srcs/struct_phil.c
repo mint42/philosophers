@@ -49,72 +49,7 @@ void	phil_print_status(struct s_phil *phil, enum e_status s)
 	write(STDOUT_FILENO, buf, len);
 }
 
-void	phil_eat(struct s_phil *phil)
-{
-	++(phil->n_x_eaten);
-	phil_print_status(phil, E_EATING);
-}
-
-void	phil_sleep(struct s_phil *phil)
-{
-	phil_print_status(phil, E_SLEEPING);
-}
-
-void	phil_think(struct s_phil *phil)
-{
-	phil_print_status(phil, E_THINKING);
-}
-
-void	phil_grab_fork(struct s_phil *phil, struct s_fork *fork, struct s_state *state)
-{
-	while (fork->is_in_use == true && phil->is_dead == false)
-		phil_live(phil);
-	if (phil->is_dead == true)
-	{
-		phil_die(phil, state);
-		return ;
-	}
-	fork_be_grabbed(fork);
-	phil_print_status(phil, E_FORK);
-}
-
-void	phil_grab_forks(struct s_phil *phil, struct s_state *state)
-{
-	phil_grab_fork(phil, phil->forks[0], state);
-	if (phil->is_dead == true)
-		return ;
-	phil_grab_fork(phil, phil->forks[1], state);
-	if (phil->is_dead == true)
-		return ;
-	return ;
-}
-
-void	phil_drop_forks(struct s_phil *phil)
-{
-	fork_be_dropped(phil->forks[0]);
-	fork_be_dropped(phil->forks[1]);
-//	phil->forks[0] = NULL;
-//	phil->forks[1] = NULL;
-}
-
-void	phil_be_full(struct s_phil *phil)
-{
-	phil->is_full = true;
-//	phil_print_status(phil, E_FULL);
-}
-
-void	phil_die(struct s_phil *phil, struct s_state *state)
-{
-	state->is_phil_dead = true;
-	phil_print_status(phil, E_DEAD);
-}
-
-void	phil_live(struct s_phil *phil)
-{
-	(void)phil;
-}
-
-int		create_phils(struct s_phil **phils, struct s_state *state)
+int		create_phils(struct s_phil **phils, const struct s_state *state)
 {
 	unsigned int	i;
 
