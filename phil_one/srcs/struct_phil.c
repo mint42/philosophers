@@ -8,7 +8,7 @@
 #include <unistd.h>
 #include <stdbool.h>
 
-void	setup_phil(struct s_phil *phil, unsigned int id, struct s_state *state)
+void	setup_phil(struct s_phil *phil, unsigned int id, const struct s_state *state)
 {
 	phil->id = id;
 	phil->n_x_eaten = 0;

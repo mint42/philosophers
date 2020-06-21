@@ -35,21 +35,18 @@ struct				s_phil
 };
 
 void				setup_phil(struct s_phil *phil, unsigned int id,
-							struct s_state *state);
+							const struct s_state *state);
+int					create_phils(struct s_phil **phils,
+							const struct s_state *state);
+void				destroy_phils(struct s_phil **phil);
+
 void				phil_print_action(const struct s_phil *phil, enum e_action ac);
 
 void				phil_eat(struct s_phil *phil);
 void				phil_sleep(struct s_phil *phil);
 void				phil_think(struct s_phil *phil);
-void				phil_grab_fork(struct s_phil *phil, struct s_fork *fork,
-							struct s_state *state);
-void				phil_grab_forks(struct s_phil *phil, struct s_state *state);
+void				phil_grab_forks(struct s_phil *phil, const struct s_state *state);
 void				phil_drop_forks(struct s_phil *phil);
-void				phil_be_full(struct s_phil *phil);
-void				phil_die(struct s_phil *phil, struct s_state *state);
-void				phil_live(struct s_phil *phil);
-
-int					create_phils(struct s_phil **phils, struct s_state *state);
-void				destroy_phils(struct s_phil **phil);
+void				phil_live(struct s_phil *phil, const struct s_state *state);
 
 #endif
