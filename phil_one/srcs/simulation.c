@@ -5,8 +5,17 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <pthread.h>
+#include <sys/time.h>
 
-void		*instructions(void *data)
+unsigned int	tod(void)
+{
+	struct timeval	tp;
+
+	gettimeofday(&tp, NULL);
+	return ((tp.tv_sec * 1000) + (tp.tv_usec / 1000));
+}
+
+void			*instructions(void *data)
 {
 	struct s_thread_data	*tdata;
 	struct s_state			*state;

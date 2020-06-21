@@ -1,3 +1,4 @@
+#include "philosophers.h"
 #include "error.h"
 #include "struct_state.h"
 #include "struct_phil.h"
@@ -37,15 +38,15 @@ void	phil_print_status(struct s_phil *phil, enum e_status s)
 	unsigned int		tmp_len;
 
 	len = 0;
-	util_uitoa(buf, TIME, 6, &tmp_len);
+	util_uitoa(buf, tod(), 11, &tmp_len);
 	len = len + tmp_len;
-	buf[len] = ' ';
+	buf[len++] = ' ';
 	util_uitoa(buf + len, phil->id, 0, &tmp_len);
 	len = len + tmp_len;
-	buf[len] = ' ';
-	util_strcpy(buf + len, stats[s], &tmp_len);
+	buf[len++] = ' ';
+	util_strcpy(buf + len, actions[ac], &tmp_len);
 	len = len + tmp_len;
-	buf[len] = '\n';
+	buf[len++] = '\n';
 	write(STDOUT_FILENO, buf, len);
 }
 
