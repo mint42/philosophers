@@ -1,19 +1,7 @@
 #ifndef STRUCT_PHIL_H
 # define STRUCT_PHIL_H
 
-struct					s_state;
-
-/*
-**	id				philosopher id and id for forks
-**	tt_die			death countdown starting when you begin eating (ms)
-**	tt_eat			time takes to eat (ms)
-**	tt_sleep		time takes to sleep (ms)
-**	n_x_eaten		# meals eaten 
-**	is_dead			TRUE/FALSE
-**	is_full			TRUE/FALSE
-**	*forks[2]		two fork pointers. one for each hand
-*/
-
+struct				s_state;
 
 enum				e_action
 {
@@ -25,14 +13,25 @@ enum				e_action
 	E_FORK,
 };
 
+/*
+**	id				philosopher id and can be reference for forks in phil_one
+**	n_x_eaten		# meals("times") eaten
+**	is_dead			TRUE/FALSE dead
+**	is_full			TRUE/FALSE full
+**	time_of_meal	time since starting last meal
+**	*forks[2]		two fork pointers. one fork for each hand
+*/
+
 struct				s_phil
 {
 	unsigned int	id;
 	unsigned int	n_x_eaten;
 	unsigned int	is_dead;
 	unsigned int	is_full;
+	unsigned int	time_of_meal;
 	struct s_fork	*forks[2];
 };
+
 
 void				setup_phil(struct s_phil *phil, unsigned int id,
 							const struct s_state *state);

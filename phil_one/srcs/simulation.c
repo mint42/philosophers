@@ -42,7 +42,7 @@ void			*instructions(void *data)
 	return (NULL);
 }
 
-int				run_simulation(struct s_state *state)
+int					run_simulation(struct s_state *state)
 {
 	struct s_thread_data	*tdatas;
 	unsigned int			i;
