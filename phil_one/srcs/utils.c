@@ -19,9 +19,9 @@ int		util_atoui(unsigned int *ui, const char *a)
 	while (util_isdigit(*a))
 	{
 		tmp = (tmp * 10) + ((*a) + 48);
-		++a;
 		if (tmp > UINT_MAX)
 			return (ERROR);
+		++a;
 	}
 	if (*a)
 		return (ERROR);
