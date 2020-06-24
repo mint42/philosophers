@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <pthread.h>
 #include <sys/time.h>
+#include <stdbool.h>
 
 unsigned int	tod(void)
 {
