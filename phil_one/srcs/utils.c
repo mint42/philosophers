@@ -23,6 +23,8 @@ int		util_atoui(unsigned int *ui, const char *a)
 		if (tmp > UINT_MAX)
 			return (ERROR);
 	}
+	if (*a)
+		return (ERROR);
 	*ui = tmp;
 	return (SUCCESS);
 }
