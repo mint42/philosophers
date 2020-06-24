@@ -24,15 +24,15 @@ void			*instructions(void *data)
 	tdata = (struct s_thread_data *)data;
 	state = tdata->state;
 	phil = &(state->phils[tdata->id - 1]);
-	while (phil->is_dead == FALSE)
+	while (phil->is_dead == false)
 	{
 		phil_think(phil);
 		phil_grab_forks(phil, state);
-		if (phil->is_dead == TRUE)
-			return (NULL);
+		if (phil->is_dead == true)
+			break ;
 		phil_eat(phil, state);
 		phil_drop_forks(phil);
-		if (phil->is_full == TRUE)
+		if (phil->is_full == true)
 		{
 			++(state->n_phils_full);
 			break ;
@@ -55,7 +55,7 @@ int					run_simulation(struct s_state *state)
 		pthread_create(&((tdatas[i]).pthread), NULL, &instructions, (void *)&(tdatas[i]));
 		++i;
 	}
-	while (are_end_conds_met(state) == FALSE)
+	while (are_end_conds_met(state) == false)
 		;
 	destroy_thread_datas(&tdatas);	
 	return (SUCCESS);

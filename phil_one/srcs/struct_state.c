@@ -22,10 +22,10 @@ int		setup_state(struct s_state *state, int argc, char **argv)
 			return (ERROR);
 		if (state->n_meals_full == 0)
 			return (ERROR);
-		state->use_full_condition = TRUE;
+		state->use_full_condition = true;
 	}
 	else
-		state->use_full_condition = FALSE;
+		state->use_full_condition = false;
 	if (create_forks(&(state->forks), state->n_phils) == ERROR)
 		return (ERROR);
 	if (create_phils(&(state->phils), state) == ERROR)
@@ -43,9 +43,9 @@ int		cleanup_state(struct s_state *state)
 
 int		are_end_conds_met(struct s_state *cur_state)
 {
-	if (cur_state->is_phil_dead > true)
-		return (TRUE);
-	if (cur_state->use_full_condition == TRUE && cur_state->n_phils_full == cur_state->n_phils)
-		return (TRUE);
-	return (FALSE);
+	if (cur_state->is_phil_dead == true)
+		return (true);
+	if (cur_state->use_full_condition == true && cur_state->n_phils_full == cur_state->n_phils)
+		return (true);
+	return (false);
 }
