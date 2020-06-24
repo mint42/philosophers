@@ -67,9 +67,6 @@ void			phil_grab_forks(struct s_phil *phil, const struct s_state *state)
 	if (phil->is_dead == true)
 		return ;
 	phil_grab_fork(phil, 1, state);
-	if (phil->is_dead == true)
-		return ;
-	return ;
 }
 
 void			phil_drop_forks(struct s_phil *phil)
