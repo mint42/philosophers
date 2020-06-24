@@ -15,7 +15,10 @@ void	setup_phil(struct s_phil *phil, unsigned int id, const struct s_state *stat
 	phil->is_full = false;
 	phil->is_dead = false;
 	phil->forks[0] = &(state->forks[id - 1]);
-	phil->forks[1] = &(state->forks[(id < state->n_phils) ? id : 0]);
+	if (state->n_phils > 1)
+		phil->forks[1] = &(state->forks[(id < state->n_phils) ? id : 0]);
+	else
+		phil->forks[1] = NULL;
 }
 
 void	phil_print_action(const struct s_phil *phil, enum e_action ac)

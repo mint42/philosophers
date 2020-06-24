@@ -57,6 +57,12 @@ static void		phil_grab_fork(struct s_phil *phil, unsigned int fork_id, const str
 
 void			phil_grab_forks(struct s_phil *phil, const struct s_state *state)
 {
+	if (state->n_phils == 1)
+	{
+		while (phil->is_dead == false)
+			phil_live(phil, state);
+		return ;
+	}
 	phil_grab_fork(phil, 0, state);
 	if (phil->is_dead == true)
 		return ;
