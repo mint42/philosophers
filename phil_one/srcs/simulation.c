@@ -30,6 +30,8 @@ void			*instructions(void *data)
 		if (phil->is_dead == true)
 			break ;
 		phil_eat(phil, state);
+		if (phil->is_dead == true)
+			break ;
 		phil_drop_forks(phil);
 		if (phil->is_full == true)
 		{
@@ -38,6 +40,8 @@ void			*instructions(void *data)
 		}
 		phil_sleep(phil, state);
 	}
+	if (phil->is_dead == true)
+		state->is_phil_dead = true;
 	return (NULL);
 }
 
