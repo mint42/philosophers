@@ -25,7 +25,7 @@ void	phil_print_action(const struct s_phil *phil, enum e_action ac)
 		"is sleeping",
 		"is eating",
 		"is full",
-		"is dead"
+		"is dead",
 		"has taken a fork",
 	};
 	char				buf[512];
