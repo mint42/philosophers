@@ -17,14 +17,12 @@ unsigned int	tod(void)
 
 void			*instructions(void *data)
 {
-	struct s_thread_data	*tdata;
 	struct s_state			*state;
 	struct s_phil			*phil;
 
-	tdata = (struct s_thread_data *)data;
-	state = tdata->state;
-	phil = &(state->phils[tdata->id - 1]);
-	while (phil->is_dead == false)
+	state = ((struct s_thread_data *)data)->state;
+	phil = &(state->phils[((struct s_thread_data *)data)->id - 1]);
+	while (phil->is_dead == false && state->is_phil_dead == false)
 	{
 		phil_think(phil);
 		phil_grab_forks(phil, state);
