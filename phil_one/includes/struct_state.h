@@ -12,7 +12,7 @@ struct s_phil;
 **	use_full_condition			was optional arg (n_meals_to_be_full) given
 **	n_meals_to_be_full			set if given, else 0
 **	n_phils_full				number of phils currently full
-**	is_phil_dead				number of phils currently dead
+**	is_phil_dead				are any philosophers dead? TRUE/FALSE
 **	is_sim_ready				is the simulation ready to be run? TRUE/FALSE
 **	forks						array of forks size [n_phils]
 **	phils						array of phils size [n_phils]
