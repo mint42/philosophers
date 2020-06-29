@@ -1,6 +1,6 @@
 # PHILOSOPHERS
 
-Philosophers is a systems project in the 42 curriculum. It introduces the main concept of concurrent programming, with focus on multi-threading, mutexes, and semaphores. The goal of the project is to simulate 3 [Dining Philosophers Problems](https://en.wikipedia.org/wiki/Dining_philosophers_problem), with slightly differing criteria.
+Philosophers is a systems project in the 42 curriculum. It introduces concurrent programming, with a focus on multi-threading, mutexes, and semaphores. The goal of the project is to simulate 3 [Dining Philosophers Problems](https://en.wikipedia.org/wiki/Dining_philosophers_problem), with slightly differing criteria.
 
 ## Getting Started
 
