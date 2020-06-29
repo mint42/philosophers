@@ -23,6 +23,8 @@ void			*instructions(void *data)
 
 	state = ((struct s_thread_data *)data)->state;
 	phil = &(state->phils[((struct s_thread_data *)data)->id - 1]);
+	while (state->is_sim_ready == false)
+		;
 	while (phil->is_dead == false && state->is_phil_dead == false)
 	{
 		phil_think(phil);
@@ -58,6 +60,7 @@ int					run_simulation(struct s_state *state)
 		pthread_create(&((tdatas[i]).pthread), NULL, &instructions, (void *)&(tdatas[i]));
 		++i;
 	}
+	state->is_sim_ready = true;
 	while (are_end_conds_met(state) == false)
 		;
 	destroy_thread_datas(&tdatas);	

@@ -13,6 +13,7 @@ struct s_phil;
 **	n_meals_to_be_full			set if given, else 0
 **	n_phils_full				number of phils currently full
 **	is_phil_dead				number of phils currently dead
+**	is_sim_ready				is the simulation ready to be run? TRUE/FALSE
 **	forks						array of forks size [n_phils]
 **	phils						array of phils size [n_phils]
 */
@@ -27,6 +28,7 @@ struct					s_state
 	unsigned int		n_meals_full;
 	unsigned int		n_phils_full;
 	unsigned int		is_phil_dead;
+	unsigned int		is_sim_ready;
 	struct s_fork		*forks;
 	struct s_phil		*phils;
 };

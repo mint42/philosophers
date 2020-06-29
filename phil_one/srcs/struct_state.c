@@ -28,6 +28,7 @@ int		setup_state(struct s_state *state, int argc, char **argv)
 		state->use_full_condition = false;
 	state->n_phils_full = 0;
 	state->is_phil_dead = false;
+	state->is_sim_ready = false;
 	if (create_forks(&(state->forks), state->n_phils) == ERROR)
 		return (ERROR);
 	if (create_phils(&(state->phils), state) == ERROR)
