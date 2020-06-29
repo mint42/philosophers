@@ -22,34 +22,32 @@ enum				e_action
 **	*forks[2]		two fork pointers. one fork for each hand
 */
 
-struct				s_philo
+struct					s_philo
 {
-	unsigned int	id;
-	unsigned int	n_x_eaten;
-	unsigned int	is_dead;
-	unsigned int	is_full;
-	unsigned int	time_of_meal;
-	struct s_fork	*forks[2];
+	unsigned int		id;
+	unsigned int		n_x_eaten;
+	unsigned int		is_dead;
+	unsigned int		is_full;
+	unsigned long int	time_of_meal;
+	struct s_fork		*forks[2];
 };
 
+void					setup_philo(struct s_philo *philo, unsigned int id,
+								const struct s_state *state);
+int						create_philos(struct s_philo **philos,
+								const struct s_state *state);
+void					destroy_philos(struct s_philo **philo);
 
-void				setup_philo(struct s_philo *philo, unsigned int id,
-							const struct s_state *state);
-int					create_philos(struct s_philo **philos,
-							const struct s_state *state);
-void				destroy_philos(struct s_philo **philo);
-
-void				philo_print_action(const struct s_philo *philo, enum e_action ac);
+void					philo_print_action(const struct s_philo *philo, enum e_action ac);
 
 /*
 **	Actions
 */
-
-void				philo_eat(struct s_philo *philo, const struct s_state *state);
-void				philo_sleep(struct s_philo *philo, const struct s_state *state);
-void				philo_think(struct s_philo *philo);
-void				philo_grab_forks(struct s_philo *philo, const struct s_state *state);
-void				philo_drop_forks(struct s_philo *philo);
-void				philo_live(struct s_philo *philo, const struct s_state *state);
+void					philo_eat(struct s_philo *philo, const struct s_state *state);
+void					philo_sleep(struct s_philo *philo, const struct s_state *state);
+void					philo_think(struct s_philo *philo);
+void					philo_grab_forks(struct s_philo *philo, const struct s_state *state);
+void					philo_drop_forks(struct s_philo *philo);
+void					philo_live(struct s_philo *philo, const struct s_state *state);
 
 #endif
