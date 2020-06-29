@@ -34,7 +34,9 @@ number_of_times_each_philosopher_must_eat: -OPTIONAL-
 
 ## References 
 
--
+- https://www.geeksforgeeks.org/mutex-vs-semaphore/
+- https://en.wikipedia.org/wiki/Semaphore_(programming)
+- manpages: pthread_\* 
 
 ## Author
 
