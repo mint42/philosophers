@@ -12,8 +12,9 @@ unsigned int	tod(void)
 {
 	struct timeval	tp;
 
-	gettimeofday(&tp, NULL);
-	return ((tp.tv_sec * 1000) + (tp.tv_usec / 1000));
+	if (gettimeofday(&tp, NULL) != 0)
+		return (0);
+	return((tp.tv_sec * 1000) + (tp.tv_usec / 1000));
 }
 
 void			*instructions(void *data)
