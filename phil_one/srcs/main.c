@@ -1,30 +1,30 @@
 #include "error.h"
 #include "philosophers.h"
 #include "struct_state.h"
-#include <stdio.h>
+#include <unistd.h>
 
 static void		print_usage(void)
 {
-	printf("./phil_one number_of_philosophers time_to_die time_to_eat time_to_sleep [number_times_each_philosopher_must_eat]\n");
-	printf("\n");
+	write(1, "./phil_one number_of_philosophers time_to_die time_to_eat time_to_sleep [number_times_each_philosopher_must_eat]\n", 113);
+	write(1, "\n", 1);
 
-	printf("number_of_philosophers:\n");
-	printf("\tNumber of philosophers and also number of forks.\n");
+	write(1, "number_of_philosophers:\n", 24);
+	write(1, "\tNumber of philosophers and also number of forks.\n", 50);
 
-	printf("time_to_die: (in milliseconds)\n");
-	printf("\tTime it takes for a philosopher to die.\n");
-	printf("\tAssuming a death countdown of [x]ms is reset everytime they\n");
-	printf("\tstart a meal, and at the beginning of every simulation.\n");
+	write(1, "time_to_die: (in milliseconds)\n", 31);
+	write(1, "\tTime it takes for a philosopher to die.\n", 41);
+	write(1, "\tAssuming a death countdown of [x]ms is reset everytime they\n", 61);
+	write(1, "\tstart a meal, and at the beginning of every simulation.\n", 57);
 
-	printf("time_to_eat: (in milliseconds)\n");
-	printf("\tTime it takes for a philosopher to eat.\n");
+	write(1, "time_to_eat: (in milliseconds)\n", 31);
+	write(1, "\tTime it takes for a philosopher to eat.\n", 41);
 
-	printf("time_to_sleep: (in milliseconds)\n");
-	printf("\tTime it takes for a philosopher to sleep.\n");
+	write(1, "time_to_sleep: (in milliseconds)\n", 33);
+	write(1, "\tTime it takes for a philosopher to sleep.\n", 43);
 
-	printf("number_of_times_each_philosopher_must_eat: -OPTIONAL-\n");
-	printf("\tIf all philosophers eat [x] meals, then the simulation ends.\n");
-	printf("\tElse, it will continue until the death of a philosopher.\n");
+	write(1, "number_of_times_each_philosopher_must_eat: -OPTIONAL-\n", 54);
+	write(1, "\tIf all philosophers eat [x] meals, then the simulation ends.\n", 62);
+	write(1, "\tElse, it will continue until the death of a philosopher.\n", 58);
 }
 
 int				main(int argc, char **argv)
