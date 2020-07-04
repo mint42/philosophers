@@ -36,7 +36,7 @@ void	philo_print_action(const struct s_philo *philo, enum e_action ac)
 	unsigned int		tmp_len;
 
 	len = 0;
-	util_uitoa(buf, tod(), 10, &tmp_len);
+	util_uitoa(buf, util_tod(), 10, &tmp_len);
 	len = len + tmp_len;
 	buf[len++] = ' ';
 	util_uitoa(buf + len, philo->id, 0, &tmp_len);

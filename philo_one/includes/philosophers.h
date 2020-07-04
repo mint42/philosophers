@@ -10,6 +10,5 @@
 struct s_state;
 
 int				run_simulation(struct s_state *state);
-unsigned int	tod(void);
 
 #endif

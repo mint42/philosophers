@@ -1,4 +1,5 @@
 #include "philosophers.h"
+#include "utils.h"
 #include "struct_state.h"
 #include "struct_philo.h"
 #include "struct_fork.h"
@@ -9,9 +10,9 @@ void			philo_eat(struct s_philo *philo, const struct s_state *state)
 {
 	unsigned int	start_time;
 
-	start_time = tod();
+	start_time = util_tod();
 	philo_print_action(philo, E_EATING);
-	while (((tod() - start_time) < state->ttt_eat) && philo->is_dead == false)
+	while (((util_tod() - start_time) < state->ttt_eat) && philo->is_dead == false)
 	{
 		philo_live(philo, state);
 	}
@@ -27,9 +28,9 @@ void			philo_sleep(struct s_philo *philo, const struct s_state *state)
 {
 	unsigned int	start_time;
 	
-	start_time = tod();
+	start_time = util_tod();
 	philo_print_action(philo, E_SLEEPING);
-	while (((tod() - start_time) < state->ttt_sleep) && philo->is_dead == false)
+	while (((util_tod() - start_time) < state->ttt_sleep) && philo->is_dead == false)
 	{
 		philo_live(philo, state);
 	}
@@ -79,7 +80,7 @@ void			philo_drop_forks(struct s_philo *philo)
 
 void			philo_live(struct s_philo *philo, const struct s_state *state)
 {
-	if ((tod() - philo->time_of_meal) >= state->ttt_die)
+	if ((util_tod() - philo->time_of_meal) >= state->ttt_die)
 	{
 		philo->is_dead = true;
 		philo_print_action(philo, E_DEAD);
