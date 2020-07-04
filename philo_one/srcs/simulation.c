@@ -4,7 +4,21 @@
 #include "struct_state.h"
 #include "struct_philo.h"
 #include <pthread.h>
-#include <stdbool.h>
+
+static void		rinse_repeat(struct s_philo *philo, struct s_state *state)
+{
+	philo_think(philo);
+	philo_grab_forks(philo, state);
+	if (philo->is_dead)
+		return ;
+	philo_eat(philo, state);
+	if (philo->is_dead)
+		return ;
+	philo_drop_forks(philo);
+	if (philo->is_full)
+		return ;
+	philo_sleep(philo, state);
+}
 
 void			*instructions(void *data)
 {
@@ -13,27 +27,16 @@ void			*instructions(void *data)
 
 	state = ((struct s_thread_data *)data)->state;
 	philo = &(state->philos[((struct s_thread_data *)data)->id - 1]);
-	while (state->is_sim_ready == false)
+	while (!state->is_sim_ready)
 		;
-	while (philo->is_dead == false && state->is_philo_dead == false)
+	while (!philo->is_dead && !philo->is_full && !state->quit)
 	{
-		philo_think(philo);
-		philo_grab_forks(philo, state);
-		if (philo->is_dead == true)
-			break ;
-		philo_eat(philo, state);
-		if (philo->is_dead == true)
-			break ;
-		philo_drop_forks(philo);
-		if (philo->is_full == true)
-		{
-			++(state->n_philos_full);
-			break ;
-		}
-		philo_sleep(philo, state);
+		rinse_repeat(philo, state);
 	}
-	if (philo->is_dead == true)
-		state->is_philo_dead = true;
+	if (philo->is_dead)
+		state->quit = 1;
+	if (philo->is_full && ++(state->n_philos_full) == state->n_philos)
+		state->quit = 1;
 	return (NULL);
 }
 
@@ -50,8 +53,8 @@ int					run_simulation(struct s_state *state)
 		pthread_create(&((tdatas[i]).pthread), NULL, &instructions, (void *)&(tdatas[i]));
 		++i;
 	}
-	state->is_sim_ready = true;
-	while (are_end_conds_met(state) == false)
+	state->is_sim_ready = 1;
+	while (!state->quit)
 		;
 	destroy_thread_datas(&tdatas);	
 	return (SUCCESS);

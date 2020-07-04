@@ -14,20 +14,20 @@ enum				e_action
 };
 
 /*
-**	id				philosopher id and can be reference for forks in philo_one
-**	n_x_eaten		# meals("times") eaten
 **	is_dead			TRUE/FALSE dead
 **	is_full			TRUE/FALSE full
+**	id				philosopher id and can be reference for forks in philo_one
+**	n_meals_eaten	number of meals eaten
 **	time_of_meal	time since starting last meal
 **	*forks[2]		two fork pointers. one fork for each hand
 */
 
 struct					s_philo
 {
+	char				is_dead;
+	char				is_full;
 	unsigned int		id;
-	unsigned int		n_x_eaten;
-	unsigned int		is_dead;
-	unsigned int		is_full;
+	unsigned int		n_meals_eaten;
 	unsigned long int	time_of_meal;
 	struct s_fork		*forks[2];
 };

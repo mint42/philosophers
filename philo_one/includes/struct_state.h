@@ -5,30 +5,35 @@ struct s_fork;
 struct s_philo;
 
 /*
-**	n_philos					number of philosophers
-**	tt_die						death counter starting when philo eats (ms)
-**	tt_eat						time takes philo to eat (ms)
-**	tt_sleep					time takes philo to sleep (ms)
-**	use_full_condition			was optional arg (n_meals_to_be_full) given
-**	n_meals_to_be_full			set if given, else 0
-**	n_philos_full				number of philos currently full
-**	is_philo_dead				are any philosophers dead? TRUE/FALSE
-**	is_sim_ready				is the simulation ready to be run? TRUE/FALSE
-**	forks						array of forks size [n_philos]
-**	philos						array of philos size [n_philos]
+**	quit			quit the simulation? TRUE/FALSE
+**						- are any philosophers dead?
+**						- are all philosophers full?
+**	is_sim_ready	is the simulation ready to be run? TRUE/FALSE
+**						- have init conditions been setup?
+**	tt_eat			total time it takes a philosopher [time to] eat
+**	tt_sleep		total time it takes a philosopher [time to] sleep
+**	tt_die			total time it takes a philosopher [time to] die
+**						- death counter resets after every meal
+**	use_full		was optional argument [n_meals_full] given
+**	n_meals_full	number of meals needed for a philosopher to be full
+						- set if [n_meals_full] was given, else 0
+**	n_philos_full	number of philosophers currently full
+**	n_philos		number of philosophers. also the number of forks
+**	forks			array of forks. size: [n_philos]
+**	philos			array of philosophers. size: [n_philos]
 */
 
 struct					s_state
 {
-	unsigned int		n_philos;
-	unsigned int		ttt_die;
-	unsigned int		ttt_eat;
-	unsigned int		ttt_sleep;
-	unsigned int		use_full_condition;
+	char				quit;
+	char				is_sim_ready;
+	unsigned int		tt_die;
+	unsigned int		tt_eat;
+	unsigned int		tt_sleep;
+	char				use_full;
 	unsigned int		n_meals_full;
 	unsigned int		n_philos_full;
-	unsigned int		is_philo_dead;
-	unsigned int		is_sim_ready;
+	unsigned int		n_philos;
 	struct s_fork		*forks;
 	struct s_philo		*philos;
 };

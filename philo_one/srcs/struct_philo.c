@@ -6,14 +6,13 @@
 #include "utils.h"
 #include <stdlib.h>
 #include <unistd.h>
-#include <stdbool.h>
 
 void	setup_philo(struct s_philo *philo, unsigned int id, const struct s_state *state)
 {
 	philo->id = id;
-	philo->n_x_eaten = 0;
-	philo->is_full = false;
-	philo->is_dead = false;
+	philo->n_meals_eaten = 0;
+	philo->is_full = 0;
+	philo->is_dead = 0;
 	philo->forks[0] = &(state->forks[id - 1]);
 	if (state->n_philos > 1)
 		philo->forks[1] = &(state->forks[(id < state->n_philos) ? id : 0]);
