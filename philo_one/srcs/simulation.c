@@ -3,20 +3,8 @@
 #include "struct_thread_data.h"
 #include "struct_state.h"
 #include "struct_philo.h"
-#include <unistd.h>
-#include <stdio.h>
 #include <pthread.h>
-#include <sys/time.h>
 #include <stdbool.h>
-
-unsigned int	tod(void)
-{
-	struct timeval	tp;
-
-	if (gettimeofday(&tp, NULL) != 0)
-		return (0);
-	return((tp.tv_sec * 1000) + (tp.tv_usec / 1000));
-}
 
 void			*instructions(void *data)
 {
