@@ -1,5 +1,5 @@
-#include "error.h"
 #include "philosophers.h"
+#include "error.h"
 #include "struct_state.h"
 #include <unistd.h>
 

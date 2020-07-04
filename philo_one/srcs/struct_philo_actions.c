@@ -8,7 +8,7 @@
 
 void			philo_eat(struct s_philo *philo, const struct s_state *state)
 {
-	unsigned int	start_time;
+	unsigned int		start_time;
 
 	start_time = util_tod();
 	philo_print_action(philo, E_EATING);
@@ -26,7 +26,7 @@ void			philo_eat(struct s_philo *philo, const struct s_state *state)
 
 void			philo_sleep(struct s_philo *philo, const struct s_state *state)
 {
-	unsigned int	start_time;
+	unsigned int		start_time;
 	
 	start_time = util_tod();
 	philo_print_action(philo, E_SLEEPING);
