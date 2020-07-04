@@ -30,7 +30,6 @@ struct					s_state
 	unsigned int		tt_die;
 	unsigned int		tt_eat;
 	unsigned int		tt_sleep;
-	char				use_full;
 	unsigned int		n_meals_full;
 	unsigned int		n_philos_full;
 	unsigned int		n_philos;

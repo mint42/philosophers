@@ -35,7 +35,7 @@ void			*instructions(void *data)
 	}
 	if (philo->is_dead)
 		state->quit = 1;
-	if (philo->is_full && ++(state->n_philos_full) == state->n_philos)
+	else if (philo->is_full && ++(state->n_philos_full) == state->n_philos)
 		state->quit = 1;
 	return (NULL);
 }

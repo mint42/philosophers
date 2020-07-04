@@ -15,16 +15,14 @@ int		setup_state(struct s_state *state, int argc, char **argv)
 		return (ERROR);
 	if (util_atoui(&(state->tt_sleep), argv[4]) == ERROR)
 		return (ERROR);
+	state->n_meals_full = 0;
 	if (argc == (NUM_ARGS_ALLOWED + 1))
 	{
 		if (util_atoui(&(state->n_meals_full), argv[5]) == ERROR)
 			return (ERROR);
 		if (state->n_meals_full == 0)
 			return (ERROR);
-		state->use_full = 1;
 	}
-	else
-		state->use_full = 0;
 	if (create_forks(&(state->forks), state->n_philos) == ERROR)
 		return (ERROR);
 	if (create_philos(&(state->philos), state) == ERROR)

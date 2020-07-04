@@ -14,10 +14,7 @@ void	setup_philo(struct s_philo *philo, unsigned int id, const struct s_state *s
 	philo->is_full = 0;
 	philo->is_dead = 0;
 	philo->forks[0] = &(state->forks[id - 1]);
-	if (state->n_philos > 1)
-		philo->forks[1] = &(state->forks[(id < state->n_philos) ? id : 0]);
-	else
-		philo->forks[1] = NULL;
+	philo->forks[1] = &(state->forks[(id == state->n_philos) ? 0 : id]);
 }
 
 void	philo_print_action(const struct s_philo *philo, enum e_action ac)
