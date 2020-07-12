@@ -30,9 +30,7 @@ void			*instructions(void *data)
 	while (!state->is_sim_ready)
 		;
 	while (!philo->is_dead && !philo->is_full && !state->quit)
-	{
 		rinse_repeat(philo, state);
-	}
 	if (philo->is_dead)
 		state->quit = 1;
 	else if (philo->is_full && ++(state->n_philos_full) == state->n_philos)
