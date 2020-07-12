@@ -5,7 +5,7 @@
 
 static void		print_usage(void)
 {
-	write(1, "./philo_one number_of_philosophers time_to_die time_to_eat time_to_sleep [number_times_each_philosopher_must_eat]\n", 113);
+	write(1, "./philo_one number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]\n", 117);
 	write(1, "\n", 1);
 
 	write(1, "number_of_philosophers:\n", 24);
