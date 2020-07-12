@@ -79,8 +79,6 @@ void			philo_drop_forks(struct s_philo *philo)
 {
 	fork_be_dropped(philo->forks[0]);
 	fork_be_dropped(philo->forks[1]);
-//	philo->forks[0] = NULL;
-//	philo->forks[1] = NULL;
 }
 
 void			philo_live(struct s_philo *philo, const struct s_state *state)
