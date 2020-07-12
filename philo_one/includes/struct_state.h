@@ -25,8 +25,8 @@ struct s_philo;
 
 struct					s_state
 {
-	char				quit;
-	char				is_sim_ready;
+	unsigned int		quit;
+	unsigned int		is_sim_ready;
 	unsigned int		tt_die;
 	unsigned int		tt_eat;
 	unsigned int		tt_sleep;
