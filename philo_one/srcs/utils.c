@@ -15,10 +15,8 @@ unsigned int	util_tod(void)
 	r = (t.tv_sec * 1000) + (t.tv_usec / 1000.0);
 	x = (double)INT_MAX;
 	while (r - x > (double)INT_MAX)
-	{
-		r = r - x;
 		x = x + INT_MAX;
-	}
+	r = r - x;
 	return ((unsigned int)r);
 }
 
