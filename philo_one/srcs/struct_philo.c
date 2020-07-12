@@ -11,6 +11,7 @@ void	setup_philo(struct s_philo *philo, unsigned int id, const struct s_state *s
 {
 	philo->id = id;
 	philo->n_meals_eaten = 0;
+	philo->time_of_meal = util_tod();
 	philo->is_full = 0;
 	philo->is_dead = 0;
 	philo->forks[0] = &(state->forks[id - 1]);
