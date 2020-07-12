@@ -28,7 +28,7 @@ struct					s_philo
 	char				is_full;
 	unsigned int		id;
 	unsigned int		n_meals_eaten;
-	unsigned long int	time_of_meal;
+	unsigned  int		time_of_meal;
 	struct s_fork		*forks[2];
 };
 
