@@ -60,7 +60,7 @@ void			*instructions(void *data)
 ** run_simulation() creates structs to store information for each thread. those
 ** threads are then created and managed by the instructions() subroutine.
 ** (see above). the simulation loops until an end condition is met, and data
-** is destroyed.
+** is then destroyed.
 */
 
 int					run_simulation(struct s_state *state)
