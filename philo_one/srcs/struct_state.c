@@ -29,6 +29,7 @@ int		setup_state(struct s_state *state, int argc, char **argv)
 		return (ERROR);
 	state->n_philos_full = 0;
 	state->quit = 0;
+	state->sim_start_time = util_tod();
 	state->is_sim_ready = 0;
 	return (SUCCESS);
 }
