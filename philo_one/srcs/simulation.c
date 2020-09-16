@@ -3,6 +3,8 @@
 #include "struct_thread_data.h"
 #include "struct_state.h"
 #include "struct_philo.h"
+#include "utils.h"
+#include <unistd.h>
 #include <pthread.h>
 
 /*
@@ -44,7 +46,10 @@ void			*instructions(void *data)
 	while (!state->is_sim_ready)
 		;
 	while (!philo->is_dead && !philo->is_full && !state->quit)
+	{
 		rinse_repeat(philo, state);
+		usleep((5 - ((util_tod() - state->sim_start_time) % 5)) * 1000);
+	}
 	if (philo->is_dead || 
 		(philo->is_full && ++(state->n_philos_full) == state->n_philos))
 		state->quit = 1;
