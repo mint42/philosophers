@@ -21,6 +21,8 @@ void	philo_print_action(const struct s_philo *philo, enum e_action ac, const str
 	unsigned int		len;
 	unsigned int		tmp_len;
 
+	if (state->quit)
+		return ;
 	len = 0;
 	util_uitoa(buf, util_tod(), 10, &tmp_len);
 	len = len + tmp_len;
