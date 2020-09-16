@@ -12,6 +12,7 @@ void			philo_eat(struct s_philo *philo, const struct s_state *state)
 
 	tt_eat = state->tt_eat;
 	start_time = util_tod();
+	philo->time_of_meal = start_time;
 	philo_print_action(philo, E_EATING, state);
 	while ((util_tod() - start_time < tt_eat) && !philo->is_dead && !state->quit)
 	{
@@ -19,7 +20,6 @@ void			philo_eat(struct s_philo *philo, const struct s_state *state)
 	}
 	if (philo->is_dead || state->quit)
 		return ;
-	philo->time_of_meal = start_time;
 	++(philo->n_meals_eaten);
 	if (philo->n_meals_eaten == state->n_meals_full)
 		philo->is_full = 1;
