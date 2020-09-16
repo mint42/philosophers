@@ -3,6 +3,18 @@
 #include <stdlib.h>
 #include <pthread.h>
 
+void	fork_be_grabbed(struct s_fork *fork)
+{
+	fork->is_in_use = 1;
+	pthread_mutex_lock(&(fork->lock));
+}
+
+void	fork_be_dropped(struct s_fork *fork)
+{
+	fork->is_in_use = 0;
+	pthread_mutex_unlock(&(fork->lock));
+}
+
 static int		setup_fork(struct s_fork *fork)
 {
 	fork->is_in_use = 0;
@@ -16,18 +28,6 @@ static int		cleanup_fork(struct s_fork *fork)
 	if (pthread_mutex_destroy(&(fork->lock)) != 0)
 		return (ERROR);
 	return (SUCCESS);
-}
-
-void	fork_be_grabbed(struct s_fork *fork)
-{
-	fork->is_in_use = 1;
-	pthread_mutex_lock(&(fork->lock));
-}
-
-void	fork_be_dropped(struct s_fork *fork)
-{
-	fork->is_in_use = 0;
-	pthread_mutex_unlock(&(fork->lock));
 }
 
 int		create_forks(struct s_fork **forks, unsigned int n_forks)
