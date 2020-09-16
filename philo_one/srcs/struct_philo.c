@@ -7,7 +7,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void	setup_philo(struct s_philo *philo, unsigned int id, const struct s_state *state)
 {
 	philo->id = id;
 	philo->n_meals_eaten = 0;
@@ -45,6 +44,7 @@ void	philo_print_action(const struct s_philo *philo, enum e_action ac)
 	write(STDOUT_FILENO, buf, len);
 }
 
+static void	setup_philo(struct s_philo *philo, unsigned int id, const struct s_state *state)
 int		create_philos(struct s_philo **philos, const struct s_state *state)
 {
 	unsigned int	i;

@@ -24,8 +24,6 @@ struct		s_fork
 	char				is_in_use;
 };
 
-int			setup_fork(struct s_fork *fork);
-int			cleanup_fork(struct s_fork *fork);
 void		fork_be_grabbed(struct s_fork *fork);
 void		fork_be_dropped(struct s_fork *fork);
 

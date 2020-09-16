@@ -4,7 +4,7 @@
 #include "struct_philo.h"
 #include <stdlib.h>
 
-void		setup_thread_data(struct s_thread_data *data, unsigned int id, struct s_state *state)
+static void		setup_thread_data(struct s_thread_data *data, unsigned int id, struct s_state *state)
 {
 	data->pthread = 0;
 	data->id = id;

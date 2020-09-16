@@ -32,8 +32,6 @@ struct					s_philo
 	struct s_fork		*forks[2];
 };
 
-void					setup_philo(struct s_philo *philo, unsigned int id,
-								const struct s_state *state);
 int						create_philos(struct s_philo **philos,
 								const struct s_state *state);
 void					destroy_philos(struct s_philo **philo);

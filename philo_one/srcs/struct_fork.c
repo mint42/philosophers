@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <pthread.h>
 
-int		setup_fork(struct s_fork *fork)
+static int		setup_fork(struct s_fork *fork)
 {
 	fork->is_in_use = 0;
 	if (pthread_mutex_init(&(fork->lock), NULL) != 0)
@@ -11,7 +11,7 @@ int		setup_fork(struct s_fork *fork)
 	return (SUCCESS);
 }
 
-int		cleanup_fork(struct s_fork *fork)
+static int		cleanup_fork(struct s_fork *fork)
 {
 	if (pthread_mutex_destroy(&(fork->lock)) != 0)
 		return (ERROR);
