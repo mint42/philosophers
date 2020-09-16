@@ -24,7 +24,7 @@ void	philo_print_action(const struct s_philo *philo, enum e_action ac, const str
 	if (state->quit)
 		return ;
 	len = 0;
-	util_uitoa(buf, util_tod(), 10, &tmp_len);
+	util_uitoa(buf, util_tod() - state->sim_start_time, 10, &tmp_len);
 	len = len + tmp_len;
 	buf[len++] = ' ';
 	util_uitoa(buf + len, philo->id, 0, &tmp_len);
