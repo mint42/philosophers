@@ -10,6 +10,7 @@ struct s_philo;
 **						- are all philosophers full?
 **	is_sim_ready	is the simulation ready to be run? TRUE/FALSE
 **						- have init conditions been setup?
+**	sim_start_time	time at start of simulation
 **	tt_eat			total time it takes a philosopher [time to] eat
 **	tt_sleep		total time it takes a philosopher [time to] sleep
 **	tt_die			total time it takes a philosopher [time to] die
@@ -27,6 +28,7 @@ struct					s_state
 {
 	unsigned int		quit;
 	unsigned int		is_sim_ready;
+	unsigned int		sim_start_time;
 	unsigned int		tt_die;
 	unsigned int		tt_eat;
 	unsigned int		tt_sleep;
