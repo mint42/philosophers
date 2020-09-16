@@ -5,6 +5,10 @@
 #include "struct_philo.h"
 #include <pthread.h>
 
+/*
+** rinse_repeat() manages the rules for each philosopher in the simultion.
+*/
+
 static void		rinse_repeat(struct s_philo *philo, struct s_state *state)
 {
 	philo_think(philo);
@@ -19,6 +23,16 @@ static void		rinse_repeat(struct s_philo *philo, struct s_state *state)
 		return ;
 	philo_sleep(philo, state);
 }
+
+/*
+** instructions() manages each individual thread, which in this case means it's
+** in control of one of the philosophers actions. first it unpacks the data
+** sent in by the void pointer, and once all of the threads are set up,
+** indicated by the is_sim_ready variable, it loops in a rinse & repeat
+** function that controls its sleeping/eating/thinking states.
+** if end conditions are met then it also updates the state variable before
+** quitting.
+*/
 
 void			*instructions(void *data)
 {
@@ -36,6 +50,13 @@ void			*instructions(void *data)
 		state->quit = 1;
 	return (NULL);
 }
+
+/*
+** run_simulation() creates structs to store information for each thread. those
+** threads are then created and managed by the instructions() subroutine.
+** (see above). the simulation loops until an end condition is met, and data
+** is destroyed.
+*/
 
 int					run_simulation(struct s_state *state)
 {
