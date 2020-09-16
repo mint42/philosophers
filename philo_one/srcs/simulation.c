@@ -11,7 +11,7 @@
 
 static void		rinse_repeat(struct s_philo *philo, struct s_state *state)
 {
-	philo_think(philo);
+	philo_think(philo, state);
 	philo_grab_forks(philo, state);
 	if (philo->is_dead)
 		return ;

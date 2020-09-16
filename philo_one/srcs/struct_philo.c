@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void	philo_print_action(const struct s_philo *philo, enum e_action ac)
+void	philo_print_action(const struct s_philo *philo, enum e_action ac, const struct s_state *state)
 {
 	const char		*actions[6] = {
 		"is thinking",

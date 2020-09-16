@@ -12,7 +12,7 @@ void			philo_eat(struct s_philo *philo, const struct s_state *state)
 
 	tt_eat = state->tt_eat;
 	start_time = util_tod();
-	philo_print_action(philo, E_EATING);
+	philo_print_action(philo, E_EATING, state);
 	while ((util_tod() - start_time < tt_eat) && !philo->is_dead && !state->quit)
 	{
 		philo_live(philo, state);
@@ -32,16 +32,16 @@ void			philo_sleep(struct s_philo *philo, const struct s_state *state)
 	
 	tt_sleep = state->tt_sleep;
 	start_time = util_tod();
-	philo_print_action(philo, E_SLEEPING);
+	philo_print_action(philo, E_SLEEPING, state);
 	while ((util_tod() - start_time < tt_sleep) && !philo->is_dead && !state->quit)
 	{
 		philo_live(philo, state);
 	}
 }
 
-void			philo_think(struct s_philo *philo)
+void			philo_think(struct s_philo *philo, const struct s_state *state)
 {
-	philo_print_action(philo, E_THINKING);
+	philo_print_action(philo, E_THINKING, state);
 }
 
 static void		philo_grab_fork(struct s_philo *philo, unsigned int fork_id, const struct s_state *state)
@@ -56,7 +56,7 @@ static void		philo_grab_fork(struct s_philo *philo, unsigned int fork_id, const 
 	if (philo->is_dead || state->quit)
 		return ;
 	fork_be_grabbed(fork);
-	philo_print_action(philo, E_FORK);
+	philo_print_action(philo, E_FORK, state);
 }
 
 void			philo_grab_forks(struct s_philo *philo, const struct s_state *state)
@@ -86,7 +86,7 @@ void			philo_live(struct s_philo *philo, const struct s_state *state)
 	if ((int)state->tt_die - ((int)util_tod() - (int)philo->time_of_meal) <= 0)
 	{
 		philo->is_dead = 1;
-		philo_print_action(philo, E_DEAD);
+		philo_print_action(philo, E_DEAD, state);
 	}
 	usleep(3);
 }

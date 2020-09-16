@@ -36,14 +36,14 @@ int						create_philos(struct s_philo **philos,
 								const struct s_state *state);
 void					destroy_philos(struct s_philo **philo);
 
-void					philo_print_action(const struct s_philo *philo, enum e_action ac);
+void					philo_print_action(const struct s_philo *philo, enum e_action ac, const struct s_state *state);
 
 /*
 **	Actions
 */
 void					philo_eat(struct s_philo *philo, const struct s_state *state);
 void					philo_sleep(struct s_philo *philo, const struct s_state *state);
-void					philo_think(struct s_philo *philo);
+void					philo_think(struct s_philo *philo, const struct s_state *state);
 void					philo_grab_forks(struct s_philo *philo, const struct s_state *state);
 void					philo_drop_forks(struct s_philo *philo);
 void					philo_live(struct s_philo *philo, const struct s_state *state);
