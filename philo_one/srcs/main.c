@@ -13,8 +13,8 @@ static void		print_usage(void)
 
 	write(1, "time_to_die: (in milliseconds)\n", 31);
 	write(1, "\tTime it takes for a philosopher to die.\n", 41);
-	write(1, "\tAssuming a death countdown of [x]ms is reset everytime they\n", 61);
-	write(1, "\tstart a meal, and at the beginning of every simulation.\n", 57);
+	write(1, "\tA death countdown of [x]ms is reset for each ", 46);
+	write(1, "\tphilosopher every time they start a meal\n", 42);
 
 	write(1, "time_to_eat: (in milliseconds)\n", 31);
 	write(1, "\tTime it takes for a philosopher to eat.\n", 41);
