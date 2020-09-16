@@ -49,7 +49,9 @@ void			util_uitoa(char *a, unsigned int ui, unsigned int width, unsigned int *le
 	pow = ui;
 	while (pow >= 10 && ++(*len))
 		pow = pow / 10;
-	util_strinit(a, '0', ((width) ? width : *len));
+	if (width)
+		*len = width;
+	util_strinit(a, '0', *len);
 	i = *len;
 	while (i-- > 0)
 	{
